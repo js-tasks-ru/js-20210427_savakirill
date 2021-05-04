@@ -5,5 +5,17 @@
  * @returns {string[]}
  */
 export function sortStrings(arr, param = 'asc') {
-
+    let arrCopy = arr.slice();
+    arrCopy.sort((a, b) => {
+        return a.localeCompare(b, ['ru', 'en'], { caseFirst: "upper" });
+    });
+    if (param == 'desc') {
+        return arrCopy.reverse();
+    } else if (param == 'asc') {
+        return arrCopy;
+    } else {
+        throw new Error('invalid parameter');
+    }
 }
+
+
